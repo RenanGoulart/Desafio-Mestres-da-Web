@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CardContainer, CardDescription} from './styles'
+import { CardContainer, CardDescription, FullCardDescription} from './styles'
 
 export interface CardProps {
   name: string;
@@ -25,11 +25,15 @@ export const Card = (props: CardProps) => {
   return (
     <>
     <CardContainer {...props} >
-      <CardDescription charAbout>
+      {charAbout ?
+      <FullCardDescription />
+      :
+      <CardDescription>
         <h2>{props.name}</h2>
         <p>{props.about}</p>
         <p onClick={handleClick}>ver detalhes</p>
       </CardDescription>
+      }
     </CardContainer>
     </>
     

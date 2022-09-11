@@ -50,8 +50,21 @@ export const CardSection = () => {
       <CardSectionSlide>
         <Swiper
         modules={[Navigation]}
-        spaceBetween={150}
+        spaceBetween={100}
         slidesPerView={3}
+        breakpoints={{
+          1440: {
+            slidesPerView: 3,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 50
+          },
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0
+          },
+        }}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'

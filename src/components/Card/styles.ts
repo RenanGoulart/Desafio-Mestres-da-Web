@@ -2,32 +2,22 @@ import styled from "styled-components";
 import { CardProps, CardDescriptionProps } from "./Card";
 
 export const CardContainer = styled('div')<CardProps>`
-  max-width: 300px;
+  max-width: 350px;
   height: 60vh;
 
   flex-shrink: 0;
-
-  position: relative;
-  z-index: 2;
   
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: 2rem;
+
 `;
 
-export const CardDescription = styled('div')<CardDescriptionProps>`
-${
-    props => props.charAbout ? 
-    `width: 200%;
-    height: 100%;
-    top: 0;
-    background-color: yellow
-    ` 
-    : 
-    `width: 100%;`
-  }
+export const CardDescription = styled.div`
+  min-height: 50%;
+
   padding: .5rem 1.5rem;
 
   display: flex;
@@ -52,10 +42,25 @@ ${
     font-size: 1.2rem;
 
     cursor: pointer;
-  }  
 
-  
+    transition: .3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }  
 `;
 
+export const FullCardDescription = styled.div`
+  display: block;
 
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  left: 80%;
+  z-index: -1;
+
+  background: blue;
+  border-radius: 2rem;
+`;
 
