@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CardSectionSlide } from './styles'
+import { Mask, CardSectionSlide } from './styles'
 import { Card } from '../Card/Card';
 
 import spidermanUrl from '../../assets/images/spiderman.svg';
@@ -45,8 +45,15 @@ const charactersList = [
 
 
 export const CardSection = () => {
+  const [gradient, setGradient] = useState(false);
   
   return (
+    <>
+      {gradient ?  
+      <Mask />
+      :
+      ''
+      }
       <CardSectionSlide>
         <Swiper
         modules={[Navigation]}
@@ -72,12 +79,13 @@ export const CardSection = () => {
         >
           {charactersList.map(({name, about, movies, rating, image}, index) => (
             <SwiperSlide key={index}>
-              <Card name={name} about={about} movies={movies} rating={rating} image={image}  />
+              <Card name={name} about={about} movies={movies} rating={rating} image={image} gradient={gradient} setGradient={setGradient} />
             </SwiperSlide>
           ))}
         </Swiper>
         <FontAwesomeIcon icon={faArrowLeft} className="swiper-button-prev" />
         <FontAwesomeIcon icon={faArrowRight} className="swiper-button-next" />
        </CardSectionSlide>
+    </>
   )
 }

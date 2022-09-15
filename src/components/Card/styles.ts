@@ -5,14 +5,13 @@ export const CardContainer = styled('div')<CardProps>`
   max-width: 350px;
   height: 60vh;
 
-  flex-shrink: 0;
+  z-index: 1;
   
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: 2rem;
-
 `;
 
 export const CardDescription = styled.div`

@@ -7,6 +7,8 @@ export interface CardProps {
   movies?: string[];
   rating?: number;
   image: string;
+  gradient: boolean;
+  setGradient: (gradient: boolean) => void;
 }
 
 export interface CardDescriptionProps {
@@ -14,18 +16,19 @@ export interface CardDescriptionProps {
 }
 
 export const Card = (props: CardProps) => {
-  const [charAbout, setCharAbout] = useState(false);
+  const [fullDescription, setFullDescription] = useState(false)
 
   function handleClick() {
-    setCharAbout(!charAbout)
+    setFullDescription(!fullDescription);
+    props.setGradient(!props.gradient);
   }
 
-  console.log(charAbout)
+  console.log(fullDescription)
 
   return (
     <>
-    <CardContainer {...props} >
-      {charAbout ?
+    <CardContainer {...props}>
+      {fullDescription ?
       <FullCardDescription />
       :
       <CardDescription>
@@ -36,7 +39,5 @@ export const Card = (props: CardProps) => {
       }
     </CardContainer>
     </>
-    
   );
-
 }
