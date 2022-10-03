@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { CardSectionProps } from './types'
 
-export const CardSectionSlide = styled.div`
+export const CardSectionSlide = styled('div')<CardSectionProps>`
   width: 70%;
 
   & .swiper-button-prev,
@@ -9,15 +10,20 @@ export const CardSectionSlide = styled.div`
     font-weight: bold;
     color: red; 
   }
-`;
 
-export const Mask = styled.div`
-  width: 100vw;
-  height: 120%;
-
-  position: absolute;
-  z-index:100;
+  ${
+    (props) => props.inFocus && props.inFocus === 2 && window.matchMedia('min-width: 1440px').matches ?
+    `& div .swiper-slide-active:not(:first-of-type) > div > div {
+      padding: 10% 10% 0 30% !important;
+      position: relative;
+      left: 80% !important;
   
-  background-image: linear-gradient(to right, #000, #0009, #0005);
+      & > .closeCard {
+        left: auto;
+      }
+    }`
+    :
+    ''
+  }
 `;
 

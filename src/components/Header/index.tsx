@@ -1,12 +1,21 @@
 import { NavLink } from 'react-router-dom';
-import { HeaderContainer, MarvelLogo, Menu } from './styles';
+import { HeaderContainer, MarvelLogo, Menu, MenuBtn } from './styles';
 import profilePicUrl from  "../../assets/images/profile-picture.svg";
+import { useContext, useState } from 'react';
+import { UserContext } from '../../contexts/authentication';
+
 
 export const Header = () => {
+  const {logout} = useContext(UserContext);
+  const [mobileMenu, setMobileMenu] = useState(false)
+
   return (
     <HeaderContainer>
       <MarvelLogo>MARVEL</MarvelLogo>
-      <Menu>
+      <MenuBtn mobileMenu={mobileMenu} onClick={() => setMobileMenu(!mobileMenu)}>
+        <span></span>
+      </MenuBtn>
+      <Menu mobileMenu={mobileMenu}>
         <li>
           <NavLink 
             to='/personagens' 
@@ -31,15 +40,13 @@ export const Header = () => {
             HQs
           </NavLink>
         </li>
-        <div>
+      </Menu>
+      <div className='profileBox'>
           <img src={profilePicUrl} alt="" />
-          <span>
-            <NavLink to='/'>
+          <span onClick={logout}>
             Sair
-            </NavLink>
           </span>
         </div>
-      </Menu>
     </HeaderContainer>
   )
 }

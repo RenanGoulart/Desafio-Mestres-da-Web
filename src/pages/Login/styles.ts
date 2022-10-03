@@ -41,6 +41,18 @@ const logoIntro = keyframes`
   }
 `;
 
+const logoIntroMobile = keyframes`
+  0%{
+    top: 25%;
+  }
+  25% {
+    top: 27%;
+  }
+  100% {
+    top: 0;
+  }
+`;
+
 export const LoginContainer = styled.main`
   width: 100vw;
 
@@ -68,8 +80,11 @@ export const FormSection = styled.section`
   color: #fff;
   background-color: #000;
   box-shadow: 4rem 0 4rem 6rem rgba(0,0,0,.9);
-`;
 
+  @media (max-width: 1080px) {
+    width: 100%;
+  }
+`;
 
 export const Mask = styled.div`
   width: 50%;
@@ -78,6 +93,11 @@ export const Mask = styled.div`
   background-color: #000;
 
   animation: ${backgroundIntro} 3s 1s forwards;
+
+  @media (max-width: 1080px) {
+    display: none;
+    animation: none;
+  }
 `;
 
 export const MarvelLogo = styled.h1`
@@ -96,6 +116,11 @@ export const MarvelLogo = styled.h1`
   left: 50%;
 
   animation: ${logoIntro} 3s .2s forwards;
+
+  @media (max-width: 1080px) {
+    left: 0;
+    animation: ${logoIntroMobile} 2s .2s forwards;
+  }
 `;
 
 export const FormTitle = styled.h2`
@@ -121,6 +146,10 @@ export const Form = styled.form`
 
   opacity: 0;
   animation: ${formIntro} 2s 2.2s forwards;
+
+  @media (max-width: 1080px) {
+    width: 80%;
+  }
 `;
 
 export const Input = styled.input`
